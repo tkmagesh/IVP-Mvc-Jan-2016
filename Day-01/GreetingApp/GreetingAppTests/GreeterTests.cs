@@ -1,25 +1,9 @@
-﻿using System;
-using GreetingApp.Controllers;
+﻿using GreetingApp.Services;
+using GreetingAppTests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GreetingAppTests
 {
-    public class FakeDateTimeServiceForMorning : IDateTimeService
-    {
-        public DateTime GetCurrentTime()
-        {
-            return new DateTime(2016,01,9,9,0,0);
-        }
-    }
-
-    public class FakeDateTimeServiceForAfternoon : IDateTimeService
-    {
-        public DateTime GetCurrentTime()
-        {
-            return new DateTime(2016,1,9,15,0,0);
-        }
-    }
-
     [TestClass]
     public class GreeterTests
     {

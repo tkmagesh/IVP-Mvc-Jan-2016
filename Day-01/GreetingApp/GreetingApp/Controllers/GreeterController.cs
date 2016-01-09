@@ -1,69 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GreetingApp.Contracts;
+using GreetingApp.Services;
 
 namespace GreetingApp.Controllers
 {
-    public interface IDateTimeService
-    {
-        DateTime GetCurrentTime();
-    }
-
-    public class DateTimeService : IDateTimeService
-    {
-        public DateTime GetCurrentTime()
-        {
-            return DateTime.Now;
-        } 
-    }
     public class GreeterController : Controller
     {
         private readonly IGreeter _greeter;
-        
-        public GreeterController(IGreeter greeter)
+        private readonly IDateTimeService _dateTimeService;
+
+        public GreeterController(IGreeter greeter, IDateTimeService dateTimeService)
         {
             _greeter = greeter;
-            
-        }
-
-        public string Greet(string name)
-        {
-            _greeter.Name = name;
-            var response = _greeter.Greet();
-            return response;
-        }
-    }
-
-    public interface IGreeter
-    {
-        string Name { get; set; }
-        string Greet();
-    }
-
-    public class Greeter : IGreeter
-    {
-        private readonly IDateTimeService _dateTimeService;
-        public string Name { get; set; }
-
-        public Greeter(IDateTimeService dateTimeService)
-        {
             _dateTimeService = dateTimeService;
         }
 
-        public string Greet()
+        public GreeterController()
         {
-            var message = string.Empty;
+            _dateTimeService = new DateTimeService();
+            _greeter = new Greeter(_dateTimeService);
+        }
+
+        public ViewResult Index()
+        {
+            return View();
+        }
+
+        public ViewResult Greet(string name)
+        {
+            _greeter.Name = name;
+            var response = _greeter.Greet();
+            this.ViewData["message"] = response;
             if (_dateTimeService.GetCurrentTime().Hour < 12)
-            {
-                message = string.Format("Hi {0}, Good Morning!!", this.Name);
-            }
-            else
-            {
-                message = string.Format("Hi {0}, Good Afternoon!!", this.Name);
-            }
-            return message;
+                return View("MorningView");
+            return View("AfternoonView");
+            //return response;
+
         }
     }
 }

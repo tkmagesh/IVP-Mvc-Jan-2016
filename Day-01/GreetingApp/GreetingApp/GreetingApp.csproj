@@ -95,7 +95,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\DateTimeService.cs" />
+    <Compile Include="Services\Greeter.cs" />
     <Compile Include="Controllers\GreeterController.cs" />
+    <Compile Include="Contracts\IDateTimeService.cs" />
+    <Compile Include="Contracts\IGreeter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +171,9 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Greeter\AfternoonView.aspx" />
+    <Content Include="Views\Greeter\Index.aspx" />
+    <Content Include="Views\Greeter\MorningView.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
