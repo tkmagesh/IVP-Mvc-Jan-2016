@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GreetingApp.Contracts;
+using GreetingApp.Models;
 using GreetingApp.Services;
 
 namespace GreetingApp.Controllers
@@ -26,12 +27,20 @@ namespace GreetingApp.Controllers
 
         public ViewResult Index()
         {
-            return View();
+           // this.ViewData["greetInput"] = new GreetInput();
+            return View(new GreetInput());
         }
 
-        public ViewResult Greet(string name)
+        public ViewResult Greet(GreetInput greetInput)
         {
-            _greeter.Name = name;
+            //var greetInput = new GreetInput {FirstName = FirstName, LastName = LastName};
+            greetInput.Validate();
+            if (!greetInput.IsValid)
+            {
+                //this.ViewData["greetInput"] = greetInput;
+                return View("Index", greetInput);
+            }
+            _greeter.Name = greetInput.FullName;
             var response = _greeter.Greet();
             this.ViewData["message"] = response;
             if (_dateTimeService.GetCurrentTime().Hour < 12)

@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\GreetInput.cs" />
     <Compile Include="Services\DateTimeService.cs" />
     <Compile Include="Services\Greeter.cs" />
     <Compile Include="Controllers\GreeterController.cs" />
@@ -174,6 +175,7 @@
     <Content Include="Views\Greeter\AfternoonView.aspx" />
     <Content Include="Views\Greeter\Index.aspx" />
     <Content Include="Views\Greeter\MorningView.aspx" />
+    <Content Include="Views\Greeter\ViewPage1.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -196,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

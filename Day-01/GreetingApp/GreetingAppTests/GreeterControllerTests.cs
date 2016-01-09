@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using GreetingApp.Controllers;
+using GreetingApp.Models;
 using GreetingApp.Services;
 using GreetingAppTests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,9 +19,9 @@ namespace GreetingAppTests
             var fakeDateTimeServiceForMorning = new FakeDateTimeServiceForMorning();
             var controller = new GreeterController(fakeGreeter, fakeDateTimeServiceForMorning);
             var expectedMessage = fakeGreeter.Greet();
-
+            var greetInput = new GreetInput();
             //Act
-            var viewResult = controller.Greet("Magesh");
+            var viewResult = controller.Greet(greetInput);
 
             //Assert
             Assert.AreEqual(expectedMessage, viewResult.ViewData["message"]);
@@ -33,9 +34,9 @@ namespace GreetingAppTests
             var fakeDateTimeServiceForMorning = new FakeDateTimeServiceForMorning();
             var controller = new GreeterController(fakeGreeter, fakeDateTimeServiceForMorning);
             var expectedViewName = "MorningView";
-
+            var greetInput = new GreetInput();
             //Act
-            var result = controller.Greet("magseh");
+            var result = controller.Greet(greetInput);
 
             //Assert
             Assert.AreEqual(expectedViewName, result.ViewName);
@@ -49,9 +50,10 @@ namespace GreetingAppTests
             var fakeDateTimeServiceForAfternoon = new FakeDateTimeServiceForAfternoon();
             var controller = new GreeterController(fakeGreeter, fakeDateTimeServiceForAfternoon);
             var expectedViewName = "AfternoonView";
+            var greetInput = new GreetInput();
 
             //Act
-            var result = controller.Greet("magseh");
+            var result = controller.Greet(greetInput);
 
             //Assert
             Assert.AreEqual(expectedViewName, result.ViewName);
