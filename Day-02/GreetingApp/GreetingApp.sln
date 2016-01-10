@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreetingApp", "GreetingApp\GreetingApp.csproj", "{631B7A03-90EB-4B91-BB72-EC17C58A077D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreetingAppTests", "GreetingAppTests\GreetingAppTests.csproj", "{AA61B90F-61DF-4DB1-A2DB-464F7AF800DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{631B7A03-90EB-4B91-BB72-EC17C58A077D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631B7A03-90EB-4B91-BB72-EC17C58A077D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631B7A03-90EB-4B91-BB72-EC17C58A077D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631B7A03-90EB-4B91-BB72-EC17C58A077D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA61B90F-61DF-4DB1-A2DB-464F7AF800DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA61B90F-61DF-4DB1-A2DB-464F7AF800DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA61B90F-61DF-4DB1-A2DB-464F7AF800DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA61B90F-61DF-4DB1-A2DB-464F7AF800DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
