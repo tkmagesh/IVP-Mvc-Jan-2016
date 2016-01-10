@@ -25,7 +25,7 @@ namespace GreetingAppTests
             var expecedViewName = "MorningView";
 
             //Act
-            var result = sut.Greet("Magesh", "Kuppan");
+            var result = sut.Greet(new GreetInput(){FirstName = "Magesh", LastName = "Kuppan"});
 
             //Assert
             Assert.AreEqual(expecedViewName, result.ViewName);
@@ -46,7 +46,7 @@ namespace GreetingAppTests
             var expecedViewName = "AfternoonView";
 
             //Act
-            var result = sut.Greet("Magesh", "Kuppan");
+            var result = sut.Greet(new GreetInput() {FirstName = "Magesh", LastName = "Kuppan"});
 
             //Assert
             Assert.AreEqual(expecedViewName, result.ViewName);
@@ -70,7 +70,7 @@ namespace GreetingAppTests
             var expecedMessage = "Dummy message";
 
             //Act
-            var result = sut.Greet(name, "Kuppan");
+            var result = sut.Greet(new GreetInput() {FirstName = "Magesh", LastName = "Kuppan"});
         
             //Assert
             //_greeterServiceMock.Greet(It.IsAny<string>()).]
