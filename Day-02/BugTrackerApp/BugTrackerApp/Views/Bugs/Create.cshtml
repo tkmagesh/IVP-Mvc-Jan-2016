@@ -1,0 +1,51 @@
+﻿@model BugTrackerApp.Models.Bug
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@*//@using (Html.BeginForm("Create", "Bugs")) {*@
+@using(Ajax.BeginForm("Create", new AjaxOptions(){HttpMethod = "Post", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "bugsList"})){
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Bug</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Severity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Severity)
+            @Html.ValidationMessageFor(model => model.Severity)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

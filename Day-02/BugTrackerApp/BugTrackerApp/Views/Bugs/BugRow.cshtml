@@ -1,0 +1,18 @@
+﻿@model BugTrackerApp.Models.Bug
+
+ <tr>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.Severity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=Model.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=Model.Id })
+        </td>
+    </tr>

@@ -1,0 +1,20 @@
+﻿@using BugTrackerApp.Models
+@model IEnumerable<BugTrackerApp.Models.Bug>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @{
+        Html.RenderPartial("Create", new Bug());
+    }
+</p>
+<div id="bugsList">
+    @{
+    Html.RenderPartial("List",Model);
+}    
+</div>
+
