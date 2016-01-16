@@ -1,0 +1,7 @@
+{
+    "bugs" : [
+        {"id" : 1, "name" : "Data Validation failure", "isClosed" : false},
+        {"id" : 2, "name" : "Server communication disrupted", "isClosed" : true},
+        {"id" : 3, "name" : "User information not displayed", "isClosed" : false}
+    ]
+}

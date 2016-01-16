@@ -10,6 +10,11 @@ function add(x,y){
    return p;
 }
 
+var p = add(100,200);
+p.then(function(result){
+    console.log("result = ", result);
+});
+
 function deferredAdd(x,y){
     var deferred = Promise.defer();
     console.log("processing ", x, " and " , y);
