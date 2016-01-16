@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace BugTrackerApp.Models
 {
@@ -16,6 +17,7 @@ namespace BugTrackerApp.Models
         public BugTrackerAppContext() : base("name=BugTrackerAppContext")
         {
         }
+
 
         public DbSet<Bug> Bugs { get; set; }
     }
