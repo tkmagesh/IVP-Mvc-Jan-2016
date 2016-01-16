@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Calculator</title>
+    <style>
+        .field{
+            margin-bottom: 10px;
+        }
+        label{
+            display: block;
+        }
+        #divResult{
+            color : red;
+            font-size: 22pt;
+        }
+    </style>
+    <script src="jquery-1.12.0.js"></script>
+    <script src="dataBinding.js"></script>
+    <script>
+    Object.prototype.toInt = function(){
+        return parseInt(this,10);
+    };
+    //Model
+    function SalaryCalculator(){
+        this.basic = dataBinding.observable(0);
+        this.hra = dataBinding.observable(0);
+        this.da = dataBinding.observable(0);
+        this.tax = dataBinding.observable(0);
+        this.salary = dataBinding.observable(0);
+
+    }
+    SalaryCalculator.prototype.calculate = function(){
+         var gross = this.basic().toInt() + this.hra().toInt() + this.da().toInt();
+         var net = gross * ((100-this.tax().toInt())/100);
+         this.salary(net);
+    }
+    //
+
+
+    $(function(){
+        window.calculator = new SalaryCalculator();
+
+        /*
+        $("#txtBasic").change(function(){
+            calculator.basic(this.value.toInt());
+        });
+        calculator.basic.subscribe(function(value){
+            $("#txtBasic").val(value);
+        });
+
+
+        $("#txtHra").change(function(){
+            calculator.hra(this.value.toInt());
+        });
+        calculator.hra.subscribe(function(value){
+            $("#txtHra").val(value);
+        });
+
+
+        $("#txtDa").change(function(){
+            calculator.da(this.value.toInt());
+        });
+        $("#rangeTax").change(function(){
+            calculator.tax(this.value.toInt());
+        });
+        $("#btnCalculate").click(function(){
+            calculator.calculate();
+        });
+
+
+        calculator.salary.subscribe(function(value){
+            $("#divResult").html(value);
+        })
+
+
+        calculator.da.subscribe(function(value){
+            $("#txtDa").val(value);
+        });
+        calculator.tax.subscribe(function(value){
+            $("#rangeTax").val(value);
+        });
+        calculator.tax.subscribe(function(value){
+            $("#spanTax").html(value);
+        });
+
+
+*/
+
+        dataBinding.applyBinding(calculator);
+    });
+    </script>
+</head>
+<body>
+    <h1>Salary Calculator</h1>
+    <hr>
+    <div class="content">
+        <div class="field">
+            <label for="">Basic :</label>
+            <input type="text" name="" id="txtBasic" data-value="basic">
+        </div>
+        <div class="field">
+            <label for="">HRA :</label>
+            <input type="text" name="" id="txtHra" data-value="hra">
+        </div>
+        <div class="field">
+            <label for="">DA :</label>
+            <input type="text" name="" id="txtDa" data-value="da">
+        </div>
+        <div class="field">
+            <label for="">Tax :</label>
+            <input type="range" name="" id="rangeTax" min="0" max="30" value="0" data-value="tax">
+            <span id="spanTax" data-text="tax">[Tax]</span>
+        </div>
+        <div class="field">
+            <input type="button" value="Calculate" id="btnCalculate" data-click="calculate">
+        </div>
+        <div class="field">
+            <div id="divResult" data-text="salary">[Salary]</div>
+        </div>
+    </div>
+</body>
+</html>
