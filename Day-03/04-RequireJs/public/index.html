@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bug Tracker</title>
+    <style>
+        .closed {
+             color : red;
+            text-decoration: line-through;
+            font-style: italic;
+            font-weight: bold;
+        }
+        li{
+            cursor: pointer;
+        }
+    </style>
+    <script src="require.js" data-main="main.js"></script>
+
+</head>
+<body>
+<h1>Bug Tracker</h1>
+<hr>
+<div class="content">
+    <label for="">Bug :</label>
+    <input type="text" data-bind="value : newBugName" >
+    <input type="button" value="Add" data-bind = "click : addNewBug">
+    <ol data-bind="foreach : bugs">
+        <li data-bind="text : name, css : {closed : isClosed}, click : toggle" >
+        </li>
+    </ol>
+</div>
+</body>
+</html>
